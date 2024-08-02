@@ -29,18 +29,47 @@ async function ConnectDB() {
 
 await ConnectDB();
 
+// Database Name and collection setup
+const dbName = "Contacts";
+const db = client.db(dbName);
+const collection = db.collection("contacts");
+
 // home get method
 app.get("/", function (req, res) {
   res.send("Hello World");
 });
 
+// create a contact
 
-//call back function to our app for feedback
+app.post("/contact", async (req, res) => {
+  try {
+    const {name, email, phone} = req.body;
+    const insertResult = await collection.insertOne(req.body);
+    console.log("Inserted documents =>", insertResult);
+    res.send(insertResult);
+  } catch (error) {
+    console.log("Error: ", error);
+    res.send(error);
+  }
+});
+
+app.get('/',async ()=>{
+
+})
+
+app.get('/',  async ()=>{
+
+})
+
+app.put('/',  async ()=>{
+
+})
+
+app.delete('/',  async ()=>{
+
+})
+
+//callback function to our app for feedback
 app.listen(PORT, () => {
   console.log("Server running on port 3000 🎉🎉🎉");
 });
-
-
-
-
-
