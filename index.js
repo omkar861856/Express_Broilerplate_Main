@@ -39,25 +39,7 @@ app.get("/", function (req, res) {
   res.send("Hello World");
 });
 
-// create a contact
-
-app.post("/contact", async (req, res) => {
-  try {
-    const {name, email, phone} = req.body;
-    const insertResult = await collection.insertOne(req.body);
-    console.log("Inserted documents =>", insertResult);
-    res.send(insertResult);
-  } catch (error) {
-    console.log("Error: ", error);
-    res.send(error);
-  }
-});
-
-app.get('/',async ()=>{
-
-})
-
-app.get('/',  async ()=>{
+app.post('/',  async ()=>{
 
 })
 
