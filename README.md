@@ -13,8 +13,7 @@
 
 # Login - Signup routes
 
-app.post("/signup", async (req, res) => {
-  try {
+1) app.post("/signup", async (req, res) => {try {
     const { username, email, password } = req.body;
     const existingUser = await collection.findOne({ email });
 
@@ -42,15 +41,12 @@ app.post("/signup", async (req, res) => {
 
         res.status(201).send("Successfully registered");
       }
-    );
-  } catch (error) {
+    )} catch (error) {
     console.log(error);
     res.send(error);
-  }
-});
+  }});
 
-app.post("/login", async (req, res) => {
-  try {
+2) app.post("/login", async (req, res) => {try {
     const { email, password } = req.body;
 
     const user = await collection.findOne({ email });
@@ -65,10 +61,8 @@ app.post("/login", async (req, res) => {
       res.send("Logged in successfully");
     } else {
       return res.status(401).send("Invalid credentials");
-    }
-  } catch (error) {
+    }}catch (error) {
     console.log(error);
     res.send(error);
-  }
-});
+  }});
   
